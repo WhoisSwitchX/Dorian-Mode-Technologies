@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Edit Bug{% endblock %}
+{% block content %}
+<div class="card shadow">
+  <div class="card-header bg-warning text-white">
+    <h5 class="mb-0">🛠 Edit Bug - {{ bug.title }}</h5>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="text-danger">{{ field.errors }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-success">Save Changes</button>
+      <a href="{% url 'bug-detail' bug.pk %}" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

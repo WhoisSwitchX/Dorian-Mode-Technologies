@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ bug.title }}{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-header bg-info text-white">
+    <h5 class="mb-0">{{ bug.title }}</h5>
+  </div>
+  <div class="card-body">
+    <p><strong>Description:</strong> {{ bug.description }}</p>
+    <p><strong>Status:</strong> 
+      <span class="badge {% if bug.status == 'Closed' %}bg-success{% elif bug.status == 'In Progress' %}bg-warning{% else %}bg-danger{% endif %}">
+        {{ bug.status }}
+      </span>
+    </p>
+    <p><strong>Priority:</strong> <span class="badge bg-secondary">{{ bug.priority }}</span></p>
+    <p><strong>Reported By:</strong> {{ bug.reporter_name }}</p>
+    <p><strong>Created:</strong> {{ bug.created_at }}</p>
+  </div>
+</div>
+<div class="mt-4">
+  <a href="{% url 'bug-edit' bug.pk %}" class="btn btn-warning">Edit Bug</a>
+  <a href="{% url 'bug-list' %}" class="btn btn-secondary">Back to Bug List</a>
+</div>
+{% endblock %}

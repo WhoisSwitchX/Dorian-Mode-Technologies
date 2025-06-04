@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="display-4">Welcome to Bug Tracker</h1>
+    <p class="lead">A lightweight bug tracking app made with Django by a Java dev learning Python.</p>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title">🐞 View Bugs</h5>
+                    <p class="card-text">Check all the reported bugs with filters and search.</p>
+                    <a href="{% url 'bug-list' %}" class="btn btn-outline-success">Browse</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-3 mt-md-0">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">📝 Report New Bug</h5>
+                    <p class="card-text">Log a new bug with priority, description and status.</p>
+                    <a href="{% url 'bug-create' %}" class="btn btn-outline-primary">Report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
